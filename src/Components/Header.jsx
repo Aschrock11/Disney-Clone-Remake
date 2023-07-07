@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { auth, provider } from '../firebase';
+// import { auth, provider } from './firebase';
 // import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
@@ -36,31 +36,31 @@ const Header = (props) => {
   //     });
   //   }, [userName, navigate, setUser]);
 
-  //   const handleAuth = () => {
-  //     if (!userName) {
-  //       signInWithPopup(auth, provider)
-  //         .then((result) => {
-  //           const credential = GoogleAuthProvider.credentialFromResult(result);
-  //           const token = credential.accessToken;
-  //           const user = result.user;
-  //           setUser(result.user);
-  //         })
-  //         .catch((error) => {
-  //           const errorCode = error.code;
-  //           const errorMessage = error.message;
-  //           const email = error.customData.email;
-  //           const credential = GoogleAuthProvider.credentialFromError(error);
-  //         });
-  //     } else if (userName) {
-  //       auth
-  //         .signOut()
-  //         .then(() => {
-  //           dispatch(setSignoutState());
-  //           navigate('/');
-  //         })
-  //         .catch((error) => alert(error));
-  //     }
-  //   };
+  const handleAuth = () => {
+    // if (!userName) {
+    // signInWithPopup(auth, provider)
+    //   .then((result) => {
+    //     const credential = GoogleAuthProvider.credentialFromResult(result);
+    //     const token = credential.accessToken;
+    //     const user = result.user;
+    //     setUser(result.user);
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     const email = error.customData.email;
+    //     const credential = GoogleAuthProvider.credentialFromError(error);
+    //   });
+    // } else if (userName) {
+    //   auth
+    //     .signOut()
+    //     .then(() => {
+    //       dispatch(setSignoutState());
+    //       navigate('/');
+    //     })
+    //     .catch((error) => alert(error));
+    // }
+  };
 
   return (
     <Nav>
