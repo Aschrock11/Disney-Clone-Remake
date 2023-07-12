@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ImgSlider from './ImgSlider';
-// import Viewers from './Viewers';
+import Viewers from './Viewers';
 // import Recommends from './Recommends';
 // import NewDisney from './NewDisney';
 // import Originals from './Originals';
@@ -48,8 +48,8 @@ const Home = (props) => {
   return (
     <Container>
       <ImgSlider />
-      {/* <Viewers />
-      <Recommends recommends={recommends} />
+      <Viewers />
+      {/* <Recommends recommends={recommends} />
       <NewDisney newDisneys={newDisneys} />
       <Originals originals={originals} />
       <Trending trending={trending} /> */}
@@ -69,7 +69,7 @@ const Container = styled.main`
   padding: 0 calc(3.5vw + 5px);
 
   &:after {
-    background: url('./images/images/home-background.png') center center / cover
+    background: url('./images/home-background.png') center center / cover
       no-repeat fixed;
     content: '';
     position: absolute;
