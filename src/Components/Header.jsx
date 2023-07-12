@@ -31,7 +31,7 @@ const Header = (props) => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
-        // navigate('./home');
+        navigate('./home');
       }
     });
   }, [userName, navigate, setUser]);
@@ -56,7 +56,7 @@ const Header = (props) => {
         .signOut()
         .then(() => {
           dispatch(setSignoutState());
-          //   navigate('/');
+          navigate('/');
         })
         .catch((error) => alert(error));
     }
@@ -98,9 +98,9 @@ const Header = (props) => {
             </a>
           </NavMenu>
           <SignOut>
-            {/* <UserImg src={userPhoto} alt={userName} /> */}
+            <UserImg src={userPhoto} alt={userName} />
             <Dropdown>
-              {/* <span onClick={handleAuth}>Sign out</span> */}
+              <span onClick={handleAuth}>Sign out</span>
             </Dropdown>
           </SignOut>
         </>
