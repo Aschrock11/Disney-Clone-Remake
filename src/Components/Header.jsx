@@ -1,65 +1,65 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-// import { auth, provider } from './firebase';
-// import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
-// import {
-//   selectUserName,
-//   selectUserPhoto,
-//   setSignoutState,
-//   setUserLoginDetails,
-// } from '../features/user/userSlice';
-// import { useEffect } from 'react';
+import { auth, provider } from './firebase';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import {
+  selectUserName,
+  selectUserPhoto,
+  setSignoutState,
+  setUserLoginDetails,
+} from '../features/user/userSlice';
 
 const Header = (props) => {
-  //   const dispatch = useDispatch();
-  //   const navigate = useNavigate();
-  //   const userName = useSelector(selectUserName);
-  //   const userPhoto = useSelector(selectUserPhoto);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
 
-  //   const setUser = (user) => {
-  //     dispatch(
-  //       setUserLoginDetails({
-  //         name: user.displayName,
-  //         email: user.email,
-  //         photo: user.photoURL,
-  //       })
-  //     );
-  //   };
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
+  };
 
-  //   useEffect(() => {
-  //     auth.onAuthStateChanged(async (user) => {
-  //       if (user) {
-  //         setUser(user);
-  //         navigate('./home');
-  //       }
-  //     });
-  //   }, [userName, navigate, setUser]);
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        // navigate('./home');
+      }
+    });
+  }, [userName, navigate, setUser]);
 
   const handleAuth = () => {
-    // if (!userName) {
-    // signInWithPopup(auth, provider)
-    //   .then((result) => {
-    //     const credential = GoogleAuthProvider.credentialFromResult(result);
-    //     const token = credential.accessToken;
-    //     const user = result.user;
-    //     setUser(result.user);
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     const email = error.customData.email;
-    //     const credential = GoogleAuthProvider.credentialFromError(error);
-    //   });
-    // } else if (userName) {
-    //   auth
-    //     .signOut()
-    //     .then(() => {
-    //       dispatch(setSignoutState());
-    //       navigate('/');
-    //     })
-    //     .catch((error) => alert(error));
-    // }
+    if (!userName) {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          const user = result.user;
+          setUser(result.user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const email = error.customData.email;
+          const credential = GoogleAuthProvider.credentialFromError(error);
+        });
+    } else if (userName) {
+      auth
+        .signOut()
+        .then(() => {
+          dispatch(setSignoutState());
+          //   navigate('/');
+        })
+        .catch((error) => alert(error));
+    }
   };
 
   return (
@@ -67,45 +67,44 @@ const Header = (props) => {
       <Logo>
         <img src='./images/logo.svg' alt='Disney-logo' />
       </Logo>
-      {/* {!userName ? ( */}
-      <Login>Login</Login>
-      {/* ) : ( */}
-      {/* add this as a prop for login onClick={handleAuth} */}
-      <>
-        <NavMenu>
-          <a href='/home'>
-            <img src='./images/home-icon.svg' alt='HOME' />
-            <span>HOME</span>
-          </a>
-          <a href='/search'>
-            <img src='./images/search-icon.svg' alt='SEARCH' />
-            <span>SEARCH</span>
-          </a>
-          <a href='/watchlist'>
-            <img src='./images/watchlist-icon.svg' alt='WATCHLIST' />
-            <span>WATCHLIST</span>
-          </a>
-          <a href='/originals'>
-            <img src='./images/original-icon.svg' alt='ORIGINALS' />
-            <span>ORIGINALS</span>
-          </a>
-          <a href='/movies'>
-            <img src='./images/movie-icon.svg' alt='MOVIES' />
-            <span>MOVIES</span>
-          </a>
-          <a href='/series'>
-            <img src='./images/series-icon.svg' alt='SERIES' />
-            <span>SERIES</span>
-          </a>
-        </NavMenu>
-        <SignOut>
-          {/* <UserImg src={userPhoto} alt={userName} /> */}
-          <Dropdown>
-            {/* <span onClick={handleAuth}>Sign out</span> */}
-          </Dropdown>
-        </SignOut>
-      </>
-      {/* )} */}
+      {!userName ? (
+        <Login onClick={handleAuth}>Login</Login>
+      ) : (
+        <>
+          <NavMenu>
+            <a href='/home'>
+              <img src='./images/home-icon.svg' alt='HOME' />
+              <span>HOME</span>
+            </a>
+            <a href='/search'>
+              <img src='./images/search-icon.svg' alt='SEARCH' />
+              <span>SEARCH</span>
+            </a>
+            <a href='/watchlist'>
+              <img src='./images/watchlist-icon.svg' alt='WATCHLIST' />
+              <span>WATCHLIST</span>
+            </a>
+            <a href='/originals'>
+              <img src='./images/original-icon.svg' alt='ORIGINALS' />
+              <span>ORIGINALS</span>
+            </a>
+            <a href='/movies'>
+              <img src='./images/movie-icon.svg' alt='MOVIES' />
+              <span>MOVIES</span>
+            </a>
+            <a href='/series'>
+              <img src='./images/series-icon.svg' alt='SERIES' />
+              <span>SERIES</span>
+            </a>
+          </NavMenu>
+          <SignOut>
+            {/* <UserImg src={userPhoto} alt={userName} /> */}
+            <Dropdown>
+              {/* <span onClick={handleAuth}>Sign out</span> */}
+            </Dropdown>
+          </SignOut>
+        </>
+      )}
     </Nav>
   );
 };
