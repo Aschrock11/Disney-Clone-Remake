@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import ImgSlider from './ImgSlider';
 import Viewers from './Viewers';
-// import Recommends from './Recommends';
-// import NewDisney from './NewDisney';
-// import Originals from './Originals';
-// import Trending from './Trending';
+import Recommends from './Recommends';
+import NewDisney from './NewDisney';
+import Originals from './Originals';
+import Trending from './Trending';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from './Firebase';
@@ -49,10 +49,10 @@ const Home = (props) => {
     <Container>
       <ImgSlider />
       <Viewers />
-      {/* <Recommends recommends={recommends} />
+      <Recommends recommends={recommends} />
       <NewDisney newDisneys={newDisneys} />
       <Originals originals={originals} />
-      <Trending trending={trending} /> */}
+      <Trending trending={trending} />
     </Container>
   );
 };
