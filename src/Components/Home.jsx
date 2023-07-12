@@ -7,7 +7,7 @@ import styled from 'styled-components';
 // import Trending from './Trending';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { db } from './firebase';
+import { db } from './Firebase';
 import { selectUserName } from '../features/user/userSlice';
 import { collection, getDocs } from 'firebase/firestore';
 
