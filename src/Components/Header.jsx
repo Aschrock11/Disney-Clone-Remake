@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { auth, provider } from './firebase';
+import { auth, provider } from './Firebase';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
