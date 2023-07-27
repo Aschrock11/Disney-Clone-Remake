@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { auth, provider } from './Firebase';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   selectUserName,
   selectUserPhoto,
@@ -72,10 +72,10 @@ const Header = (props) => {
       ) : (
         <>
           <NavMenu>
-            <a href='/home'>
+            <Link to={'/home'}>
               <img src='./images/home-icon.svg' alt='HOME' />
               <span>HOME</span>
-            </a>
+            </Link>
             <a>
               <img src='./images/search-icon.svg' alt='SEARCH' />
               <span>SEARCH</span>
