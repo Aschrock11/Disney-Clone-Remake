@@ -31,10 +31,10 @@ const Header = (props) => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
-        // navigate('./home');
+        navigate('/home');
       }
     });
-  }, [userName, navigate, setUser]);
+  }, [userName]);
 
   const handleAuth = () => {
     if (!userName) {
