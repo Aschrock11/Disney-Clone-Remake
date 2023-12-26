@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Originals = ({ originals }) => {
+  console.log(originals);
   return (
     <Container>
       <Container>
